@@ -71,11 +71,11 @@ class BillingSft:
         ######Total Price&Tax Variable###
 
         self.cosmetic_price = StringVar()
-        self.cold_price = StringVar()
+        self.cold_drink_price = StringVar()
         self.grocery_price = StringVar()
 
         self.cosmetic_tax = StringVar()
-        self.cold_tax = StringVar()
+        self.cold_drink_tax = StringVar()
         self.grocery_tax = StringVar()
 
         ###END
@@ -83,7 +83,7 @@ class BillingSft:
         ####Customer Variable######
 
         self.c_name = StringVar()
-        self.c_phn = StringVar()
+        self.c_phone = StringVar()
         self.bill_no = StringVar()
         x = random.randint(1000, 9999)
         self.bill_no.set(str(x))
@@ -100,7 +100,7 @@ class BillingSft:
         cname_txt = Entry(F1, width=16, textvar=self.c_name, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=1,pady=5, padx=10)
 
         cphone_lbbl = Label(F1, text="Customer Phone No", bg=bg_color, fg="lavender",font=("times new roman", 15, "bold")).grid(row=0, column=2, padx=20, pady=5)
-        cphone_txt = Entry(F1, width=16, textvar=self.c_phn, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=3, pady=5, padx=10)
+        cphone_txt = Entry(F1, width=16, textvar=self.c_phone, font="arial 15", bd=7, relief=SUNKEN).grid(row=0, column=3, pady=5, padx=10)
 
         c_bill_lbbl = Label(F1, text="Bill Number ", bg=bg_color, fg="lavender",font=("times new roman", 15, "bold")).grid(row=0, column=4, padx=20, pady=5)
         c_bill_txt = Entry(F1, width=16, textvar=self.bill_no, font="arial 15", bd=7, relief=SUNKEN).grid(row=0,column=5,pady=5,padx=10)
@@ -156,7 +156,7 @@ class BillingSft:
         ######End
 
         #####Jwellery_Frame$$$$$$
-        F4=LabelFrame(self.root,text="Jwellery",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="#a0615f", bg=bg_color)
+        F4=LabelFrame(self.root,text="Jewellery",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="#a0615f", bg=bg_color)
         F4.place(x=670, y=175, width=325,height=380)
 
         maza_lbl= Label(F4, text="Ear ring",font=("times new roman", 16, "bold"),bg=bg_color, fg="lavender").grid(row=0, column=0,padx=10, pady=10, sticky="w")
@@ -185,10 +185,10 @@ class BillingSft:
 
         bill_title = Label(F5, text="Bill Area", font="arial 15 bold", bd=7, relief=GROOVE).pack(fill=X)
         scrol_y = Scrollbar(F5, orient=VERTICAL)
-        self.textarea = Text(F5, yscrollcommand=scrol_y.set)
+        self.txtarea = Text(F5, yscrollcommand=scrol_y.set)
         scrol_y.pack(side=RIGHT, fill=Y)
-        scrol_y.config(command=self.textarea.yview)
-        self.textarea.pack(fill=BOTH, expand=1)
+        scrol_y.config(command=self.txtarea.yview)
+        self.txtarea.pack(fill=BOTH, expand=1)
 
         ###END
 
@@ -202,25 +202,25 @@ class BillingSft:
         m2_lbl = Label(F6, text="Total Cosmetics Price", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=1, column=0, padx=20, pady=1, sticky="w")
         m2_txt = Entry(F6, width=18, textvariable=self.grocery_price,font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=1)
 
-        m3_lbl = Label(F6, text="Total Jwellery Price", bg=bg_color, fg="white", font=("times new roman", 14, "bold")).grid(row=2, column=0, padx=20, pady=1, sticky="w")
+        m3_lbl = Label(F6, text="Total Jewellery Price", bg=bg_color, fg="white", font=("times new roman", 14, "bold")).grid(row=2, column=0, padx=20, pady=1, sticky="w")
         m3_txt = Entry(F6, width=18,textvariable=self.cold_drink_price, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=1)
 
-        c1_lbl = Label(F6, text="cloths Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=0, column=2, padx=20, pady=1, sticky="w")
+        c1_lbl = Label(F6, text="Cloths Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=0, column=2, padx=20, pady=1, sticky="w")
         c1_txt = Entry(F6, width=18, textvariable=self.cosmetic_tax,font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=0, column=3, padx=10, pady=1)
 
         c2_lbl = Label(F6, text="Cosmetics Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=1, column=2, padx=20, pady=1, sticky="w")
         c2_txt = Entry(F6, width=18,textvariable=self.grocery_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=3, padx=10, pady=1)
 
-        c3_lbl = Label(F6, text="Jwellery Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=2, column=2, padx=20, pady=1, sticky="w")
+        c3_lbl = Label(F6, text="Jewellery Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=2, column=2, padx=20, pady=1, sticky="w")
         c3_txt = Entry(F6, width=18,textvariable=self.cold_drink_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=3, padx=10, pady=1)
 
         btn_F=Frame(F6,bd=7,relief=GROOVE)
         btn_F.place(x=750,width=580, height=105)
         total_btn = Button(btn_F,command=self.total,text="Total",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=0, padx=5,pady=5)
-        gbill_btn = Button(btn_F,text="Generate Bill",command=self.welcome_bill,bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=1, padx=5,pady=5)
+        gbill_btn = Button(btn_F,text="Generate Bill",command=self.new_bill,bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=1, padx=5,pady=5)
         clear_btn = Button(btn_F,text="Clear",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=2, padx=5,pady=5)
         exit_btn = Button(btn_F,text="Exit",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=3, padx=5,pady=5)
-        self.welcome_bill()
+        self.new_bill()
 
         ####End
 
