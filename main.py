@@ -1,5 +1,6 @@
 ###project start####
 from tkinter import *
+import math,random,os
 
 class BillingSft:
     def __init__ (self,root):
@@ -13,20 +14,82 @@ class BillingSft:
         title = Label(self.root, text="ABC COMPANY", bd=15, relief=GROOVE, bg=bg_color, fg="indigo",font=("times new roman", 30, "bold"), pady=2).pack(fill=X)
         ###########Variables####################
 
-        ####Cloths_Variable########
+        ######Cosmetic_variable#######
+
+        self.soap = IntVar()
+
+        self.face_cream = IntVar()
+
+        self.face_wash = IntVar()
+
+        self.spray = IntVar()
+
+        self.gel = IntVar()
+
+        self.lotion = IntVar()
+
+
 
         #end######
 
-        ######Cosmetic_variable#######
+
+
+        ####Cloths_Variable########
+
+        self.rice = IntVar()
+
+        self.food_oil = IntVar()
+
+        self.tea = IntVar()
+
+        self.daal = IntVar()
+
+        self.wheat = IntVar()
+
+        self.suger = IntVar()
+
+
+
         ###End
 
         #######Jwellery_Variable######
+
+        self.maza = IntVar()
+
+        self.cock = IntVar()
+
+        self.sprite = IntVar()
+
+        self.thumbsup = IntVar()
+
+        self.limca = IntVar()
+
+        self.frooti= IntVar()
+
         ##End
 
         ######Total Price&Tax Variable###
+
+        self.cosmetic_price = StringVar()
+        self.cold_price = StringVar()
+        self.grocery_price = StringVar()
+
+        self.cosmetic_tax = StringVar()
+        self.cold_tax = StringVar()
+        self.grocery_tax = StringVar()
+
         ###END
 
         ####Customer Variable######
+
+        self.c_name = StringVar()
+        self.c_phn = StringVar()
+        self.bill_no = StringVar()
+        x = random.randint(1000, 9999)
+        self.bill_no.set(str(x))
+
+        self.search_bill = StringVar()
+
         ###ENd
 
         #####customer detail####
@@ -45,7 +108,7 @@ class BillingSft:
         bill_btn = Button(F1, text="Search", width=10, bd=8, bg=colorbtn, fg="indigo", font="arial 12 bold").grid(row=0,column=6,padx=10, pady=10)
 
         #####Cloth_Frame######
-        F3=LabelFrame(self.root,text="Cloths",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="gold", bg=bg_color)
+        F3=LabelFrame(self.root,text="Cloths",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="#a0615f", bg=bg_color)
         F3.place(x=340, y=175, width=325,height=380)
 
         rice_lbl= Label(F3, text="Gulhar",font=("times new roman", 16, "bold"),bg=bg_color, fg="lavender").grid(row=0, column=0,padx=10, pady=10, sticky="w")
@@ -69,7 +132,7 @@ class BillingSft:
         #####End
 
         ######Cosmetics_Frame#######
-        F2=LabelFrame(self.root,text="Cosmatics",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="gold", bg=bg_color)
+        F2=LabelFrame(self.root,text="Cosmatics",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="#a0615f", bg=bg_color)
         F2.place(x=5, y=175, width=325,height=380)
 
         bath_lbl= Label(F2, text="Bath Soap",font=("times new roman", 16, "bold"),bg=bg_color, fg="lavender").grid(row=0, column=0,padx=10, pady=10, sticky="w")
@@ -93,7 +156,7 @@ class BillingSft:
         ######End
 
         #####Jwellery_Frame$$$$$$
-        F4=LabelFrame(self.root,text="Jwellery",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="gold", bg=bg_color)
+        F4=LabelFrame(self.root,text="Jwellery",bd=10,relief=GROOVE, font= ("times new roman", 15, "bold"), fg="#a0615f", bg=bg_color)
         F4.place(x=670, y=175, width=325,height=380)
 
         maza_lbl= Label(F4, text="Ear ring",font=("times new roman", 16, "bold"),bg=bg_color, fg="lavender").grid(row=0, column=0,padx=10, pady=10, sticky="w")
@@ -116,6 +179,8 @@ class BillingSft:
         ######End
 
         ####Bill_Section#####
+
+
         ###END
 
         ####Button_Section###
