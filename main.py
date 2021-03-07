@@ -180,6 +180,15 @@ class BillingSft:
 
         ####Bill_Section#####
 
+        F5 = LabelFrame(self.root, bd=10, relief=GROOVE)
+        F5.place(x=1010, y=190, width=340, height=380)
+
+        bill_title = Label(F5, text="Bill Area", font="arial 15 bold", bd=7, relief=GROOVE).pack(fill=X)
+        scrol_y = Scrollbar(F5, orient=VERTICAL)
+        self.textarea = Text(F5, yscrollcommand=scrol_y.set)
+        scrol_y.pack(side=RIGHT, fill=Y)
+        scrol_y.config(command=self.textarea.yview)
+        self.textarea.pack(fill=BOTH, expand=1)
 
         ###END
 
