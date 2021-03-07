@@ -1,6 +1,6 @@
 ###project start####
-from tkinter import *
-import math,random,os
+from tkinter import*
+import math,random
 
 class BillingSft:
     def __init__ (self,root):
@@ -193,15 +193,90 @@ class BillingSft:
         ###END
 
         ####Button_Section###
+        F6 = LabelFrame(self.root, text="Bill Menu", bd=10, relief=GROOVE, font=("times new roman", 15, "bold"),fg="gold", bg=bg_color)
+        F6.place(x=0, y=560, relwidth=1, height=140)
+
+        m1_lbl=Label(F6, text= "Total Cloth Price", bg=bg_color,fg="white",font=("times new roman", 14, "bold" )).grid(row=0,column=0, padx=20, pady=1,sticky="w")
+        m1_txt=Entry(F6, width=18,textvariable=self.cosmetic_price, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=0, column= 1, padx=10, pady=1)
+
+        m2_lbl = Label(F6, text="Total Cosmetics Price", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=1, column=0, padx=20, pady=1, sticky="w")
+        m2_txt = Entry(F6, width=18, textvariable=self.grocery_price,font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=1, padx=10, pady=1)
+
+        m3_lbl = Label(F6, text="Total Jwellery Price", bg=bg_color, fg="white", font=("times new roman", 14, "bold")).grid(row=2, column=0, padx=20, pady=1, sticky="w")
+        m3_txt = Entry(F6, width=18,textvariable=self.cold_drink_price, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=1, padx=10, pady=1)
+
+        c1_lbl = Label(F6, text="cloths Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=0, column=2, padx=20, pady=1, sticky="w")
+        c1_txt = Entry(F6, width=18, textvariable=self.cosmetic_tax,font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=0, column=3, padx=10, pady=1)
+
+        c2_lbl = Label(F6, text="Cosmetics Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=1, column=2, padx=20, pady=1, sticky="w")
+        c2_txt = Entry(F6, width=18,textvariable=self.grocery_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=1, column=3, padx=10, pady=1)
+
+        c3_lbl = Label(F6, text="Jwellery Tax", bg=bg_color, fg="white",font=("times new roman", 14, "bold")).grid(row=2, column=2, padx=20, pady=1, sticky="w")
+        c3_txt = Entry(F6, width=18,textvariable=self.cold_drink_tax, font="arial 10 bold", bd=7, relief=SUNKEN).grid(row=2, column=3, padx=10, pady=1)
+
+        btn_F=Frame(F6,bd=7,relief=GROOVE)
+        btn_F.place(x=750,width=580, height=105)
+        total_btn = Button(btn_F,command=self.total,text="Total",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=0, padx=5,pady=5)
+        gbill_btn = Button(btn_F,text="Generate Bill",command=self.welcome_bill,bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=1, padx=5,pady=5)
+        clear_btn = Button(btn_F,text="Clear",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=2, padx=5,pady=5)
+        exit_btn = Button(btn_F,text="Exit",bg="cadetblue", fg="white",bd=2,pady=15,width=10,font="arial 15 bold").grid(row=0,column=3, padx=5,pady=5)
+        self.welcome_bill()
+
         ####End
 
 
 
  #####Functions
     def total(self):
-        pass
+        self.c_s_p = self.soap.get() * 40
+        self.c_fc = self.face_cream.get() * 60
+        self.c_fw = self.face_wash.get() * 140
+        self.c_s = self.spray.get() * 240
+        self.c_g = self.gel.get() * 70
+        self.c_l = self.lotion.get() * 420
+
+        self.total_cosmatic_price = float(
+            self.c_s_p +
+            self.c_fc +
+            self.c_fw +
+            self.c_s +
+            self.c_g +
+            self.c_l
+        )
+        self.cosmetic_price.set(str(self.total_cosmatic_price) + " TK.")
+        self.cosmetic_tax.set(str(round((self.total_cosmatic_price * 0.05), 2)) + " TK.")
+
+        self.total_grocery_price = float(
+            (self.rice.get() * 52) +
+            (self.food_oil.get() * 46) +
+            (self.daal.get() * 140) +
+            (self.wheat.get() * 240) +
+            (self.suger.get() * 70) +
+            (self.tea.get() * 420)
+        )
+        self.grocery_price.set(str(self.total_grocery_price) + " TK.")
+        self.grocery_tax.set(str(round((self.total_grocery_price * 0.05), 2)) + " TK.")
+
+        self.total_drinks_price = float(
+            (self.maza.get() * 40) +
+            (self.cock.get() * 60) +
+            (self.frooti.get() * 40) +
+            (self.thumbsup.get() * 40) +
+            (self.limca.get() * 70) +
+            (self.sprite.get() * 20)
+        )
+        self.cold_drink_price.set(str(self.total_drinks_price) + " TK.")
+        self.cold_drink_tax.set(str(round((self.total_drinks_price * 0.05), 2)) + " TK.")
     def new_bill(self):
-        pass
+        self.txtarea.delete('1.0', END)
+        self.txtarea.insert(END, "\t\tWelcome!!!\n")
+        self.txtarea.insert(END, f"\n Bill Number: {self.bill_no.get()}")
+        self.txtarea.insert(END, f"\nCustomer Name: {self.c_name.get()}")
+        self.txtarea.insert(END, f"\nPhone Number: {self.c_phone.get()}")
+        self.txtarea.insert(END, f"\n======================================")
+        self.txtarea.insert(END, f"\n Products\t\tQTY\t      Price")
+        self.txtarea.insert(END, f"\n======================================")
+
     def make_bill(self):
         pass
 
